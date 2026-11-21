@@ -25,9 +25,12 @@
 
 (def root (or (first (remove #(str/starts-with? % "--") *command-line-args*)) "."))
 
+;; JUN-1410 (2026-11-21): the did:web host and the wrangler routes moved to itonami.app.
+;; kotoba/src/types.ts, kotoba/test/air-crew.test.ts, kotodama.jsonld diverged from upstream ON PURPOSE; the hashes and byte totals pinned below are the
+;; new content.
 (def claims
   {:tracked-files 28
-   :inherited-bytes 51772          ; the 11 inherited files still carried unchanged
+   :inherited-bytes 51766          ; the 11 inherited files still carried unchanged
    :svelte-artifacts 0             ; no .svelte / svelte.config / svelte-dir file survives
    :sveltekit-compat-flags 0       ; nodejs_compat / nodejs_als were adapter-cloudflare's
    :appview-ts-files 0             ; TypeScript outside kotoba/ -- the migration's subject
@@ -48,14 +51,14 @@
   {"MIGRATION-TODO.md"            "048e99ad62b548174e869d3ea9a92c37edd3f0b16f9565f84b8f5ae291338d70"
    "NOTICE"                       "9d3bd5678f857c647a465987cd8538580215416648991fd9de47e6dc648544f0"
    "README.edn"                   "dd40da7f9b3f198ab8fc00691f858c2bef8400574a4d1b598dba169de067ea07"
-   "kotodama.jsonld"              "249cfd73e7ba116524cb571faa61f5231da6e1269b8f43699c012eb219b85a09"
+   "kotodama.jsonld"              "dc9f48b281f047fc3957a3839ecd41e538393da89c6927922bad66e3e55b5ee9"
    "kotoba/package.json"          "d0945eff73a171a3d03e29097c4a03706b7ee005a096c610208c707b1ff76fe7"
    "kotoba/tsconfig.json"         "95a429e51d6162cb7205b603f745e7604d93ffbb1ea6c346e5c6215a79ae541e"
    "kotoba/vitest.config.ts"      "f82a551ef4da1c9cbf17985a3bee96eee450a3e4a46bff0d96c6150263121eff"
    "kotoba/src/index.ts"          "0250a50400f4ea68300b1e9ec16e7f34ec4b77c9a91a486b7835154664b6521c"
    "kotoba/src/registry.ts"       "b529f9cd4d5b510c92159be9003d7b3f705456c9abd5320171016361e603ddbd"
-   "kotoba/src/types.ts"          "c6fd574cc44ae215e6260041405c8e06da9a90eafdcf7b556743f7c92e6fbd6e"
-   "kotoba/test/air-crew.test.ts" "15e6ebdabf74f2356225bd2f1e1d6be5aa34a4fbb031ebcaa24256703c38d94d"})
+   "kotoba/src/types.ts"          "b5d6a548de718330a131b8498c6d87e42a283e14c3c094a8f6f089b1270c3b1b"
+   "kotoba/test/air-crew.test.ts" "ff0f159f5fd86be175d4b36ac7e0a96a7ac8fc19e9db9282696b73346c22655a"})
 
 ;; What the migration REMOVED, by name. A byte total cannot say "the appview
 ;; TypeScript is gone"; this can, and it fails if any of it comes back.

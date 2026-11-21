@@ -27,7 +27,7 @@ import {
   coverage,
 } from "../src/index.js";
 
-const OWNER = "did:web:air-crew.etzhayyim.com";
+const OWNER = "did:web:air-crew.itonami.app";
 
 describe("air-crew kotoba (product-front, kotoba E2E split)", () => {
   let e: any;
