@@ -34,7 +34,7 @@
 
 (deftest forwarded-headers
   (let [out (route/forward-headers
-             {"host" "air-crew.etzhayyim.com"
+             {"host" "air-crew.itonami.app"
               "authorization" "Bearer tok"
               "content-length" "17"
               "content-type" "text/plain"

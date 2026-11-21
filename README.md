@@ -62,9 +62,9 @@ Measured 2026-08-18 against this branch. Reproduce from
 
 | What this repo asserts | What is true now |
 |---|---|
-| `wrangler.jsonc` serves `air-crew.etzhayyim.com/*` and `a1rcr3w0.etzhayyim.com/*` | Both **NXDOMAIN** on 1.1.1.1 and 8.8.8.8. The zone is healthy — `etzhayyim.com` apex answers with two A records — so these are missing labels, not an outage. |
+| `wrangler.jsonc` serves `air-crew.itonami.app/*` and `a1rcr3w0.itonami.app/*` | Both resolve through the `itonami.app` wildcard record and answer **522**, because no Worker is bound (measured 2026-11-21). Before the routes moved from `etzhayyim.com` on that day, both labels were NXDOMAIN on 1.1.1.1 and 8.8.8.8. |
 | `/xrpc/:nsid` relays to `mcp.etzhayyim.com` | **NXDOMAIN.** The relay returns **502** with the URL it tried. It does not hide an unreachable upstream behind a 200. |
-| `kotodama.jsonld` declares the actor `did:web:air-crew.etzhayyim.com` | Unresolvable — `did:web` needs `https://air-crew.etzhayyim.com/.well-known/did.json` and the host does not resolve. |
+| `kotodama.jsonld` declares the actor `did:web:air-crew.itonami.app` | Unresolvable — `did:web` needs `https://air-crew.itonami.app/.well-known/did.json` and the host does not resolve. |
 | `MIGRATION-TODO.md`: seed awaiting a Charter §2(a) codemod | The scan recorded in that same file found **none** of the patterns it was written to remove. The blocker was never the codemod. |
 | `NOTICE`: "Charter Compliance Rider v3.1 (see `CHARTER-RIDER.md`)" | That file is **not in this repository**. It is in `etzhayyim/root`. |
 | The landing page's route and var counts | Now rendered from the route table and from the env keys the Worker was handed. Not baked. |
@@ -329,3 +329,14 @@ accidental one.
 **If you add a file, add it to `:allowed-additions`** — the verifier checks that
 set against the tree, so the provenance comparison in the quickstart stays
 meaningful.
+
+## Divergence from upstream (2026-11-21, JUN-1410)
+
+The owner decided to unify the domains under `itonami.app`, so the wrangler routes and the
+`did:web` identifier moved from `etzhayyim.com` to `itonami.app`. This app is not deployed and the old
+identifier never resolved. The new hosts (`a1rcr3w0.itonami.app`, `air-crew.itonami.app`) resolve through the `itonami.app`
+wildcard record but answer 522, because no Worker is bound (measured 2026-11-21).
+
+Files that no longer match their upstream bytes: `kotoba/src/types.ts`, `kotoba/test/air-crew.test.ts`, `kotodama.jsonld`.
+The verifier under `scripts/` pins the new hashes and byte totals.
+Unchanged: other services' hostnames, the lexicon namespace, and `docs/adr/` (the record of that time).

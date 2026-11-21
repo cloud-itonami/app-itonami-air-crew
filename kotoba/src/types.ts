@@ -42,7 +42,7 @@ export const TRAVEL_INNER_TYPE = "com.etzhayyim.apps.airCrew.crewTravel";
 export const DUTY_TIME_INNER_TYPE = "com.etzhayyim.apps.airCrew.dutyTimeRecord";
 export const NOTIFICATION_INNER_TYPE = "com.etzhayyim.apps.airCrew.crewNotification";
 
-export const AIR_CREW_DID_PREFIX = "did:web:air-crew.etzhayyim.com:" as const;
+export const AIR_CREW_DID_PREFIX = "did:web:air-crew.itonami.app:" as const;
 
 // ─── Pairing template (PLAINTEXT, public ops catalog) ───────────────
 

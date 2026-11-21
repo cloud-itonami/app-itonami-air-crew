@@ -1,6 +1,6 @@
 {
   "@context": "https://etzhayyim.com/ns/kotodama/v1",
-  "@id": "did:web:air-crew.etzhayyim.com",
+  "@id": "did:web:air-crew.itonami.app",
   "name": "air-crew",
   "nanoid": "a1rcr3w0",
   "project": "air-crew",

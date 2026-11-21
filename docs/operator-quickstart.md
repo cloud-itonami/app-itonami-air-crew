@@ -40,7 +40,7 @@ cd "$REPO" && npx --yes kbb --backend sci scripts/verify-docs-claims.cljk .
 ```
 SCANNED	25
 PASS	tracked-files	expected=27	actual=27
-PASS	inherited-bytes	expected=51772	actual=51772
+PASS	inherited-bytes	expected=51766	actual=51766
 PASS	preserved-files-unchanged	expected=[]	actual=[]
 PASS	removed-by-migration-absent	expected=[]	actual=[]
 PASS	svelte-artifacts	expected=0	actual=0
@@ -343,8 +343,9 @@ cd "$REPO" && npx wrangler deploy
 ```
 
 **Not run in this walk, and read this before you run it.** The routes point at
-`air-crew.etzhayyim.com` and `a1rcr3w0.etzhayyim.com`, both **NXDOMAIN**; the
-XRPC relay target `mcp.etzhayyim.com` is **NXDOMAIN** too. A successful deploy
+`air-crew.itonami.app` and `a1rcr3w0.itonami.app`. Both resolve through the
+`itonami.app` wildcard record and answer **522** (measured 2026-11-21); the
+XRPC relay target `mcp.etzhayyim.com` is **NXDOMAIN**. A successful deploy
 would be unreachable, and if reached would return 502. The README's *Where to
 start* puts "decide whether this app exists" first for that reason.
 
@@ -369,7 +370,7 @@ not contain `origin/main`.
 ## §10 DNS
 
 ```bash
-for h in air-crew.etzhayyim.com a1rcr3w0.etzhayyim.com \
+for h in air-crew.itonami.app a1rcr3w0.itonami.app \
          dispatcher.etzhayyim.com mcp.etzhayyim.com etzhayyim.com; do
   for ns in 1.1.1.1 8.8.8.8; do
     printf "%-28s @%-8s " "$h" "$ns"
